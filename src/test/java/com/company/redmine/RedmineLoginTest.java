@@ -2,7 +2,6 @@ package com.company.redmine;
 
 import com.company.base.BaseTest;
 import com.company.pages.RedmineHomePage;
-import com.company.pages.RedmineLandingPage;
 import com.company.pages.RedmineLoginPage;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,10 +19,5 @@ public class RedmineLoginTest extends BaseTest {
         String actualUser = redmineHomePage.getUserLogged();
 
         Assert.assertEquals("Login Fallido", expectedUser, actualUser);
-
-        System.out.println("Interrupcion....");
-
-
     }
-
 }
