@@ -16,6 +16,7 @@
         <maven.surefire.version>2.22.1</maven.surefire.version>
         <junit.version>4.13</junit.version>
         <seleniumhq.version>3.141.59</seleniumhq.version>
+        <cucumber.version>5.7.0</cucumber.version>
     </properties>
 
     <dependencies>
@@ -48,6 +49,29 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>
