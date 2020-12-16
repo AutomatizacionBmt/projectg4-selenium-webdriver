@@ -20,7 +20,7 @@ public class RedmineProjectTest extends BaseTest {
         Assert.assertEquals("Login Fallido", "Logged in as user",
                 redmineHomePage.getUserLogged());
 
-        RedmineProjectsPage redmineProjectsPage = redmineHomePage.clickOnMenu("PROJECTS");
+        RedmineProjectsPage redmineProjectsPage = (RedmineProjectsPage) redmineHomePage.clickOnMenu("PROJECTS");
         redmineProjectsPage.clickNewProject();
 
         String randomNumber = AppUtil.generateRandomNumber();

@@ -23,7 +23,7 @@ public class WebRedmineProjectsStepdefs {
     public void yoRegistroUnProyecto(Map<String, String> projectData) {
 
         RedmineHomePage redmineHomePage = (RedmineHomePage) baseStepDefs.currentPage;
-        redmineProjectsPage = redmineHomePage.clickOnMenu("PROJECTS");
+        redmineProjectsPage = (RedmineProjectsPage) redmineHomePage.clickOnMenu("PROJECTS");
 
         redmineProjectsPage.clickNewProject();
 
