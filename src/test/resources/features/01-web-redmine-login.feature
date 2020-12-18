@@ -9,3 +9,9 @@ Característica: Web UI Redmine Login
     Dado Yo voy a la pagina de login de Redmine
     Cuando Yo inicio sesion con mis credenciales usuario "user" y password "bitnami1"
     Entonces Yo deberia visualizar en la pagina de inicio mi usuario "user"
+
+  @gui @Working
+  Escenario: Iniciar sesión satisfactoriamente en Redmine presionando enter
+    Dado Yo voy a la pagina de login de Redmine
+    Cuando Yo inicio sesion con mis credenciales usuario "user" y password "bitnami1" presionando enter
+    Entonces Yo deberia visualizar en la pagina de inicio mi usuario "user"

@@ -4,6 +4,7 @@ package com.company.cucumber;
 import com.company.base.BaseTest;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 
 public class Hooks {
 
@@ -13,7 +14,12 @@ public class Hooks {
     }
 
     @After("@gui")
-    public static void tearDown(){
+    public static void tearDown(Scenario scenario){
+
+        if(scenario.isFailed()){
+            BaseTest.recordFailure(scenario.getName());
+        }
+
         BaseTest.tearDown();
     }
 

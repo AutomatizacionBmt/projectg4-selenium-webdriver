@@ -44,4 +44,12 @@ public class WebRedmineLoginStepDefs {
 
         Assert.assertEquals("Inicio de sesión incorrecto: ", expectedUser, actualUser);
     }
+
+    @Cuando("Yo inicio sesion con mis credenciales usuario {string} y password {string} presionando enter")
+    public void yoInicioSesionConMisCredencialesUsuarioYPasswordPresionandoEnter(String userName, String password) {
+
+        System.out.println("Yo inicio sesion con mis credenciales usuario {string} y password {string} presionando enter");
+        redmineHomePage = redmineLoginPage.loginWithEnter(userName, password);
+        baseStepDefs.currentPage = redmineHomePage;
+    }
 }

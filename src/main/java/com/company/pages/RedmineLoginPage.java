@@ -1,6 +1,7 @@
 package com.company.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class RedmineLoginPage extends RedmineLandingPage {
@@ -19,6 +20,15 @@ public class RedmineLoginPage extends RedmineLandingPage {
         driver.findElement(txtUserName).sendKeys(userName);
         driver.findElement(txtPassword).sendKeys(password);
         driver.findElement(btnLogin).click();
+
+        return new RedmineHomePage(driver);
+
+    }
+
+    public RedmineHomePage loginWithEnter(String userName, String password) {
+
+        driver.findElement(txtUserName).sendKeys(userName);
+        driver.findElement(txtPassword).sendKeys(password + Keys.ENTER);
 
         return new RedmineHomePage(driver);
 

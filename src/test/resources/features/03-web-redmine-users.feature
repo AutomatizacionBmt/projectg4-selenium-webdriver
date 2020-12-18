@@ -35,4 +35,3 @@ Característica: Web UI - Redmine - Users
     Y El usuario se registro correctamente
     Cuando Yo no elimino el usuario de la lista de usuarios
     Entonces El usuario deberia visualizarce en la lista de usuarios
-

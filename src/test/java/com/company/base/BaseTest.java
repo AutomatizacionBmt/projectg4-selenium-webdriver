@@ -4,9 +4,15 @@ import com.company.pages.RedmineLandingPage;
 import com.company.utils.Urls;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.File;
+import org.apache.commons.io.FileUtils;
+
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
@@ -23,7 +29,11 @@ public class BaseTest {
         //Implicit Wait
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-        driver.get(Urls.REDMINE_URL);
+        System.getenv("navegador");
+
+
+
+        driver.get(Urls.REDMINE_URL_LOCAL);
         driver.manage().window().maximize();
 
         redmineLandingPage = new RedmineLandingPage(driver);
@@ -36,6 +46,19 @@ public class BaseTest {
 
     public static WebDriver getDriver(){
         return driver;
+    }
+
+    public static void recordFailure(String scenarioName){
+
+        String fileName = scenarioName + ".png";
+        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+
+        try {
+            FileUtils.copyFile(screenshot,
+                    new File("resources/screenshots/"+fileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
