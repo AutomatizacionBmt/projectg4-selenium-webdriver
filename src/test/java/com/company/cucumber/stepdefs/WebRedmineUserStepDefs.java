@@ -80,4 +80,12 @@ public class WebRedmineUserStepDefs {
         System.out.println("¿Existe en la lista el usuario? -> " + userExist);
         Assert.assertFalse(userExist);
     }
+
+    @Cuando("Yo no elimino el usuario de la lista de usuarios")
+    public void yoNoEliminoElUsuarioDeLaListaDeUsuarios() {
+
+        redmineUserPage.clickOnLinkUsers();
+        redmineUserPage.clickLinkDeleteUser(redmineUser.getUserName());
+        redmineUserPage.doNotRemoveUser();
+    }
 }

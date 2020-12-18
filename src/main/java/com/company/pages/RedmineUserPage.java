@@ -88,21 +88,26 @@ public class RedmineUserPage extends RedmineLandingPage {
                 .anyMatch(webElements -> webElements.get(0).getText().equalsIgnoreCase(userName));*/
     }
 
-    public void clickLinkDeleteUser(String userName){
+    public void clickLinkDeleteUser(String userName) {
 
         List<WebElement> userList = driver.findElement(By.tagName("table"))
                 .findElement(By.tagName("tbody"))
                 .findElements(By.tagName("tr"));
 
         for (WebElement userRow : userList) {
-            if (userName.equals(userRow.findElements(By.tagName("td")).get(0).getText())){
+            if (userName.equals(userRow.findElements(By.tagName("td")).get(0).getText())) {
                 userRow.findElements(By.tagName("td")).get(7).findElement(linkDelete).click();
                 break;
             }
         }
     }
 
-   public void removeUser(){
+    public void removeUser() {
         driver.switchTo().alert().accept();
-   }
+        //driver.switchTo().alert().sendKeys("222");
+    }
+
+    public void doNotRemoveUser() {
+        driver.switchTo().alert().dismiss();
+    }
 }
