@@ -49,7 +49,6 @@ public class WebRedmineUserStepDefs {
     @Entonces("El usuario se registro correctamente")
     public void elUsuarioSeRegistroCorrectamente() {
 
-        //User sasasasasaFFFF created.
         Assert.assertEquals("No se registró correctamente el usuario",
                 "User " + redmineUser.getUserName() + " created.",
                 redmineUserPage.getUIMessageCreateUser());
@@ -63,5 +62,22 @@ public class WebRedmineUserStepDefs {
 
         redmineUserPage.clickOnLinkUsers();
         Assert.assertTrue(redmineUserPage.userIsOnList(redmineUser.getUserName()));
+    }
+
+    @Cuando("Yo elimino el usuario de la lista de usuarios")
+    public void yoEliminoElUsuarioDeLaListaDeUsuarios() {
+
+        redmineUserPage.clickOnLinkUsers();
+        redmineUserPage.clickLinkDeleteUser(redmineUser.getUserName());
+        redmineUserPage.removeUser();
+    }
+
+
+    @Entonces("El usuario no deberia visualizarce en la lista de usuarios")
+    public void elUsuarioNoDeberiaVisualizarceEnLaListaDeUsuarios() {
+
+        Boolean userExist = redmineUserPage.userIsOnList(redmineUser.getUserName());
+        System.out.println("¿Existe en la lista el usuario? -> " + userExist);
+        Assert.assertFalse(userExist);
     }
 }
