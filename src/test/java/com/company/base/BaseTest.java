@@ -40,7 +40,6 @@ public class BaseTest {
                 break;
             default:
                 throw new IllegalStateException("The browserName " +browserName+ " option is not present");
-
         }
 
         //Implicit Wait
