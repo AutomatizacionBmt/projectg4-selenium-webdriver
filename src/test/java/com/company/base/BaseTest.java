@@ -12,9 +12,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
@@ -61,32 +65,48 @@ public class BaseTest {
     }
 
     private static void setChromeDriverProperty(){
-        if(System.getProperty("os.name").toLowerCase().contains("windows")){
-            System.setProperty("webdriver.chrome.driver", "resources/drivers/chrome/chromedriver.exe");
-        }else if(System.getProperty("os.name").toLowerCase().contains("mac")){
-            System.setProperty("webdriver.chrome.driver", "resources/drivers/chrome/chromedriver");
-        }else{
-            System.setProperty("webdriver.chrome.driver", "resources/drivers/chrome/chromedriverlinux");
-        }
 
-        driver = new ChromeDriver();
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setBrowserName("chrome");
+
+
+        try {
+            URL hubUrl = new URL(Urls.SELENIUM_GRID);
+            driver = new RemoteWebDriver(hubUrl, capabilities);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void setFirefoxDriverProperty(){
-        if(System.getProperty("os.name").toLowerCase().contains("windows")){
-            System.setProperty("webdriver.gecko.driver", "resources/drivers/firefox/geckodriver.exe");
-        }else if(System.getProperty("os.name").toLowerCase().contains("mac")){
-            System.setProperty("webdriver.gecko.driver", "resources/drivers/firefox/geckodriver");
-        }else{
-            System.setProperty("webdriver.gecko.driver", "resources/drivers/firefox/geckodriverlinux");
-        }
 
-        driver = new FirefoxDriver();
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setBrowserName("firefox");
+
+
+        try {
+            URL hubUrl = new URL(Urls.SELENIUM_GRID);
+            driver = new RemoteWebDriver(hubUrl, capabilities);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void setSafariDriverProperty(){
 
-        driver = new SafariDriver();
+        DesiredCapabilities capabilities = DesiredCapabilities.safari();
+        capabilities.setBrowserName("safari");
+
+
+        try {
+            URL hubUrl = new URL(Urls.SELENIUM_GRID);
+            driver = new RemoteWebDriver(hubUrl, capabilities);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void recordFailure(String scenarioName){
