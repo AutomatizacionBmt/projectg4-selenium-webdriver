@@ -17,5 +17,18 @@ And do not use it for commercial purposes.
 ## Running  all test classes
     mvn clean test
 
-## Running a Single Test Class
-    mvn clean -Dtest=com.company.redmine.MyFirstRedmineTest test
+## Running Cucumber Test with a subset of scenarios tagged with "@gui"
+    mvn clean test -Dcucumber.filter.tags="@gui"
+
+## Running Cucumber Test with a subset of scenarios tagged with "@gui and @Working"
+    mvn clean test -Dcucumber.filter.tags="@gui and @Working"
+
+## Running Cucumber Test with a subset of scenarios tagged with "@gui or @Working"
+    mvn clean test -Dcucumber.filter.tags="@gui or @Working"
+
+## Crear variables de entorno
+Mac OS and Linux
+ * ```export browserName=firefox```
+
+Windows
+ * ```set browserName=firefox```        
